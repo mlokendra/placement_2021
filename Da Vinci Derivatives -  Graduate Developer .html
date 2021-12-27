@@ -1,0 +1,1451 @@
+<!DOCTYPE doctype html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <link href="assets/img/favicon.ico" rel="icon" type="image/png"/>
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+  <title>
+   Student Dashboard
+  </title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+  <meta content="width=device-width" name="viewport"/>
+  <!-- Bootstrap core CSS     -->
+  <!--TODO: Common Date Picker. UI-->
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+   <link href="/static/css/animate.min.css" rel="stylesheet"/>
+   <link href="/static/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
+   <link href="https://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+   <link href="/static/css/pe-icon-7-stroke.css" rel="stylesheet">
+    <link href="/static/poweruser/css/datatables.css" rel="stylesheet"/>
+    <script src="/static/js/jquery-1.10.2.js" type="text/javascript">
+    </script>
+    <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js">
+    </script>
+    <script src="/static/js/bootstrap.min.js" type="text/javascript">
+    </script>
+    <script src="/static/js/light-bootstrap-dashboard.js">
+    </script>
+    <script src="/static/poweruser/js/datatables.js">
+    </script>
+    <script type="text/javascript">
+     $(document).ready(function() {
+        $('#Table').DataTable({"pageLength": 50});
+    } );
+    </script>
+   </link>
+  </link>
+ </head>
+ <style type="text/css">
+  .modal-backdrop {
+  z-index: -1;
+}
+ </style>
+ <body>
+  <div class="modal" id="modal" role="dialog">
+   <div class="modal-dialog">
+    <div class="modal-content">
+     <div class="modal-header">
+      <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
+       ×
+      </button>
+      <h4 class="modal-title">
+       title
+      </h4>
+     </div>
+     <div class="modal-body">
+     </div>
+     <div class="modal-footer">
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="wrapper">
+   <div class="sidebar" data-color="purple">
+    <div class="sidebar-wrapper">
+     <div class="logo">
+      <a class="simple-text">
+       Dashboard
+      </a>
+     </div>
+     <ul class="nav">
+      <li>
+       <a href="/dashboard/">
+        <i class="pe-7s-graph">
+        </i>
+        <p>
+         Dashboard
+        </p>
+       </a>
+      </li>
+      <li>
+       <a href="/profile/">
+        <i class="pe-7s-user">
+        </i>
+        <p>
+         My Profile
+        </p>
+       </a>
+      </li>
+      <li>
+       <a href="/resume/">
+        <i class="pe-7s-note2">
+        </i>
+        <p>
+         Manage Resume
+        </p>
+       </a>
+      </li>
+      <li>
+       <a href="/jobapplications/">
+        <i class="pe-7s-news-paper">
+        </i>
+        <p>
+         Job Openings
+        </p>
+       </a>
+      </li>
+      <li>
+       <a href="/applications/">
+        <i class="pe-7s-science">
+        </i>
+        <p>
+         Your applications
+        </p>
+       </a>
+      </li>
+      <li>
+       <a href="/jaf_list/">
+        <i class="pe-7s-bell">
+        </i>
+        <p>
+         Proforma
+        </p>
+       </a>
+      </li>
+      <li>
+       <a href="/testschedule/">
+        <i class="pe-7s-date pe-5x">
+        </i>
+        <p>
+         Calendar
+        </p>
+       </a>
+      </li>
+      <!--
+		<li>
+		   <a href="/personal_calendar">
+		   	<i class="pe-7s-date pe-5x"></i>
+			   <p> Personal Calendar</p>
+		   </a>
+		</li>
+		-->
+      <li class="">
+       <a href="/stats/" target="_blank">
+        <i class="pe-7s-rocket">
+        </i>
+        <p>
+         Stats
+        </p>
+       </a>
+      </li>
+      <li class="">
+       <a href="/contact_us/" target="blank">
+        <i class="pe-7s-rocket">
+        </i>
+        <p>
+         Contact Us
+        </p>
+       </a>
+      </li>
+      <li class="">
+       <a href="/about/" target="blank">
+        <i class="pe-7s-rocket">
+        </i>
+        <p>
+         Credits
+        </p>
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+   <div class="main-panel">
+    <nav class="navbar navbar-default navbar-fixed">
+     <div class="container-fluid">
+      <div class="navbar-header">
+       <button class="navbar-toggle" data-target="#navigation-example-2" data-toggle="collapse" type="button">
+        <span class="sr-only">
+         Toggle navigation
+        </span>
+        <span class="icon-bar">
+        </span>
+        <span class="icon-bar">
+        </span>
+        <span class="icon-bar">
+        </span>
+       </button>
+       <a class="navbar-brand" href="#">
+        Welcome
+       </a>
+      </div>
+      <div class="collapse navbar-collapse">
+       <ul class="nav navbar-nav navbar-right">
+        <li>
+         <a href="/yashkrit/changepassword/">
+          Change Password
+         </a>
+        </li>
+        <li>
+         <a href="/logout/">
+          Log out
+         </a>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </nav>
+    <div class="content">
+     <div class="container-fluid">
+      <div class="row">
+       <div class="col-md-12">
+        <div class="card">
+         <div class="header">
+          <h4 class="title">
+           Proforma
+          </h4>
+          <p class="category">
+           Companies open to your department
+          </p>
+          <hr/>
+         </div>
+         <div class="content">
+          <div class="text-center">
+           <table class="table table-centered table-reponsive table-striped table-bordered table-hover">
+            <tbody>
+             <tr>
+              <td>
+               Company :
+              </td>
+              <td>
+               Da Vinci Derivatives
+              </td>
+             </tr>
+             <tr>
+              <td>
+               Company Name :
+              </td>
+              <td>
+               Da Vinci Derivatives
+              </td>
+             </tr>
+             <tr>
+              <td>
+               Nature Of Business :
+              </td>
+              <td>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               Designation :
+              </td>
+              <td>
+               Graduate Developer
+              </td>
+             </tr>
+             <tr>
+              <td>
+               Tentative Job Location :
+              </td>
+              <td>
+               Amsterdam
+              </td>
+             </tr>
+             <tr>
+              <td>
+               Description :
+              </td>
+              <td>
+               <p>
+                Da Vinci Derivatives is a unique proprietary trading firm, focussing on volatility trading, arbitrage and market making across major exchanges worldwide. We identify opportunities and trade based on in-house developed strategies, and we provide liquidity and efficiency to the markets.
+                <br/>
+                Our philosophy towards work is best captured by the saying “Be good, work hard and great things will happen”. We are meritocratic by nature and believe that empowering talent in our organization is the only way forward. Our employees are out greatest asset and we are constantly looking for smart, talented and passionate people to strengthen our team and support our growth plans.
+                <br/>
+                As a Software Engineer you will have direct, immediate, and large-scale impact on the company.  Whether you focus on our trading algorithms or the architecture of the core components that form the backbone of our trading technology, your work will make a difference.
+               </p>
+               <p>
+                Responsibilities:
+                <br/>
+                •    Understanding, designing and implementing trading algorithms and strategies in close collaboration with Trading and Research
+                <br/>
+                •    Working closely with Trading, Research and MidOffice to automate and optimize their workflows, making sure that ‘the business’ runs as effectively and efficiently as possible
+                <br/>
+                •    Various operational aspects, such as system deployment, monitoring and tweaking
+               </p>
+               <p>
+                Requirements:
+                <br/>
+                •    Smart, passionate, enthusiastic and skilled computer science student with a talent for simplicity and the drive to get things done
+                <br/>
+                •    Curiosity in computers and programming since a young age (available hobby projects on GitHub is a plus)
+                <br/>
+                •    Eagerness to learn and interest in trading
+                <br/>
+                •    Practical and results-driven attitude and seriousness about code quality
+                <br/>
+                •    Ability to work well with others, including other departments, such as Trading and Research
+               </p>
+               <p>
+                Benefits:
+                <br/>
+                •    Training in C++ &amp; Python and development best practices
+                <br/>
+                •    You will be mentored by an experienced developer
+                <br/>
+                •    A once in a lifetime opportunity to be part of a successful and fast-growing young company
+                <br/>
+                •    A very exciting and dynamic work environment
+                <br/>
+                •    The freedom to come up with great ideas and the space to push these to completion
+                <br/>
+                •    60KE base salary and 30kE end of the year bonus after permanent contract is offered
+                <br/>
+                •    Outstanding performance is also rewarded with long-term share holding in company
+                <br/>
+                •    For people coming from abroad we provide a relocation package and expat service
+                <br/>
+                •    Meals during work hours
+                <br/>
+                •    Reimbursement of travel costs
+                <br/>
+                •    Sponsored gym membership
+                <br/>
+                •    Inhouse game room (pool table, board games and console games)
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               Eligibilty :
+              </td>
+              <td>
+               <table class="table table-centered table-reponsive text-center table-bordered table-striped table-sm">
+                <thead class="">
+                 <tr>
+                  <td>
+                   Department
+                  </td>
+                  <td>
+                   BT
+                  </td>
+                  <td>
+                   BS
+                  </td>
+                  <td>
+                   MT
+                  </td>
+                  <td>
+                   DoubleMajor
+                  </td>
+                  <td>
+                   dual
+                  </td>
+                  <td>
+                   dualB
+                  </td>
+                  <td>
+                   dualC
+                  </td>
+                  <td>
+                   Mdes
+                  </td>
+                  <td>
+                   MBA
+                  </td>
+                  <td>
+                   Phd
+                  </td>
+                  <td>
+                   MSc
+                  </td>
+                  <td>
+                   MSR
+                  </td>
+                 </tr>
+                </thead>
+                <tbody>
+                 <tr>
+                  <td>
+                   AE
+                  </td>
+                  <td>
+                   N
+                  </td>
+                  <td>
+                   -
+                  </td>
+                  <td>
+                   N
+                  </td>
+                  <td>
+                   N
+                  </td>
+                  <td>
+                   N
+                  </td>
+                  <td>
+                   N
+                  </td>
+                  <td>
+                   N
+                  </td>
+                  <td>
+                   -
+                  </td>
+                  <td>
+                   -
+                  </td>
+                  <td>
+                   N
+                  </td>
+                  <td>
+                   -
+                  </td>
+                  <td>
+                   N
+                  </td>
+                  <tr>
+                   <td>
+                    BSBE
+                   </td>
+                   <td>
+                    N
+                   </td>
+                   <td>
+                    -
+                   </td>
+                   <td>
+                    N
+                   </td>
+                   <td>
+                    N
+                   </td>
+                   <td>
+                    N
+                   </td>
+                   <td>
+                    N
+                   </td>
+                   <td>
+                    N
+                   </td>
+                   <td>
+                    -
+                   </td>
+                   <td>
+                    -
+                   </td>
+                   <td>
+                    N
+                   </td>
+                   <td>
+                    -
+                   </td>
+                   <td>
+                    N
+                   </td>
+                   <tr>
+                    <td>
+                     CE
+                    </td>
+                    <td>
+                     N
+                    </td>
+                    <td>
+                     -
+                    </td>
+                    <td>
+                     N
+                    </td>
+                    <td>
+                     N
+                    </td>
+                    <td>
+                     N
+                    </td>
+                    <td>
+                     N
+                    </td>
+                    <td>
+                     N
+                    </td>
+                    <td>
+                     -
+                    </td>
+                    <td>
+                     -
+                    </td>
+                    <td>
+                     N
+                    </td>
+                    <td>
+                     -
+                    </td>
+                    <td>
+                     N
+                    </td>
+                    <tr>
+                     <td>
+                      CHE
+                     </td>
+                     <td>
+                      N
+                     </td>
+                     <td>
+                      -
+                     </td>
+                     <td>
+                      N
+                     </td>
+                     <td>
+                      N
+                     </td>
+                     <td>
+                      N
+                     </td>
+                     <td>
+                      N
+                     </td>
+                     <td>
+                      N
+                     </td>
+                     <td>
+                      -
+                     </td>
+                     <td>
+                      -
+                     </td>
+                     <td>
+                      N
+                     </td>
+                     <td>
+                      -
+                     </td>
+                     <td>
+                      N
+                     </td>
+                     <tr>
+                      <td>
+                       CSE
+                      </td>
+                      <td>
+                       Y
+                      </td>
+                      <td>
+                       -
+                      </td>
+                      <td>
+                       N
+                      </td>
+                      <td>
+                       Y
+                      </td>
+                      <td>
+                       Y
+                      </td>
+                      <td>
+                       Y
+                      </td>
+                      <td>
+                       Y
+                      </td>
+                      <td>
+                       -
+                      </td>
+                      <td>
+                       -
+                      </td>
+                      <td>
+                       N
+                      </td>
+                      <td>
+                       -
+                      </td>
+                      <td>
+                       N
+                      </td>
+                      <tr>
+                       <td>
+                        EE
+                       </td>
+                       <td>
+                        Y
+                       </td>
+                       <td>
+                        -
+                       </td>
+                       <td>
+                        N
+                       </td>
+                       <td>
+                        Y
+                       </td>
+                       <td>
+                        Y
+                       </td>
+                       <td>
+                        Y
+                       </td>
+                       <td>
+                        Y
+                       </td>
+                       <td>
+                        -
+                       </td>
+                       <td>
+                        -
+                       </td>
+                       <td>
+                        N
+                       </td>
+                       <td>
+                        -
+                       </td>
+                       <td>
+                        N
+                       </td>
+                       <tr>
+                        <td>
+                         ES
+                        </td>
+                        <td>
+                         -
+                        </td>
+                        <td>
+                         N
+                        </td>
+                        <td>
+                         N
+                        </td>
+                        <td>
+                         -
+                        </td>
+                        <td>
+                         N
+                        </td>
+                        <td>
+                         -
+                        </td>
+                        <td>
+                         N
+                        </td>
+                        <td>
+                         -
+                        </td>
+                        <td>
+                         -
+                        </td>
+                        <td>
+                         N
+                        </td>
+                        <td>
+                         -
+                        </td>
+                        <td>
+                         -
+                        </td>
+                        <tr>
+                         <td>
+                          ME
+                         </td>
+                         <td>
+                          N
+                         </td>
+                         <td>
+                          -
+                         </td>
+                         <td>
+                          N
+                         </td>
+                         <td>
+                          N
+                         </td>
+                         <td>
+                          N
+                         </td>
+                         <td>
+                          N
+                         </td>
+                         <td>
+                          N
+                         </td>
+                         <td>
+                          -
+                         </td>
+                         <td>
+                          -
+                         </td>
+                         <td>
+                          N
+                         </td>
+                         <td>
+                          -
+                         </td>
+                         <td>
+                          N
+                         </td>
+                         <tr>
+                          <td>
+                           MSE
+                          </td>
+                          <td>
+                           N
+                          </td>
+                          <td>
+                           -
+                          </td>
+                          <td>
+                           N
+                          </td>
+                          <td>
+                           N
+                          </td>
+                          <td>
+                           N
+                          </td>
+                          <td>
+                           N
+                          </td>
+                          <td>
+                           N
+                          </td>
+                          <td>
+                           -
+                          </td>
+                          <td>
+                           -
+                          </td>
+                          <td>
+                           N
+                          </td>
+                          <td>
+                           -
+                          </td>
+                          <td>
+                           N
+                          </td>
+                          <tr>
+                           <td>
+                            PHY
+                           </td>
+                           <td>
+                            -
+                           </td>
+                           <td>
+                            N
+                           </td>
+                           <td>
+                            -
+                           </td>
+                           <td>
+                            N
+                           </td>
+                           <td>
+                            N
+                           </td>
+                           <td>
+                            N
+                           </td>
+                           <td>
+                            N
+                           </td>
+                           <td>
+                            -
+                           </td>
+                           <td>
+                            -
+                           </td>
+                           <td>
+                            N
+                           </td>
+                           <td>
+                            N
+                           </td>
+                           <td>
+                            -
+                           </td>
+                           <tr>
+                            <td>
+                             CHM
+                            </td>
+                            <td>
+                             -
+                            </td>
+                            <td>
+                             N
+                            </td>
+                            <td>
+                             -
+                            </td>
+                            <td>
+                             N
+                            </td>
+                            <td>
+                             N
+                            </td>
+                            <td>
+                             N
+                            </td>
+                            <td>
+                             N
+                            </td>
+                            <td>
+                             -
+                            </td>
+                            <td>
+                             -
+                            </td>
+                            <td>
+                             N
+                            </td>
+                            <td>
+                             N
+                            </td>
+                            <td>
+                             -
+                            </td>
+                            <tr>
+                             <td>
+                              MTH
+                             </td>
+                             <td>
+                              -
+                             </td>
+                             <td>
+                              Y
+                             </td>
+                             <td>
+                              -
+                             </td>
+                             <td>
+                              Y
+                             </td>
+                             <td>
+                              Y
+                             </td>
+                             <td>
+                              Y
+                             </td>
+                             <td>
+                              Y
+                             </td>
+                             <td>
+                              -
+                             </td>
+                             <td>
+                              -
+                             </td>
+                             <td>
+                              N
+                             </td>
+                             <td>
+                              N
+                             </td>
+                             <td>
+                              -
+                             </td>
+                             <tr>
+                              <td>
+                               ECO
+                              </td>
+                              <td>
+                               -
+                              </td>
+                              <td>
+                               N
+                              </td>
+                              <td>
+                               -
+                              </td>
+                              <td>
+                               N
+                              </td>
+                              <td>
+                               N
+                              </td>
+                              <td>
+                               N
+                              </td>
+                              <td>
+                               N
+                              </td>
+                              <td>
+                               -
+                              </td>
+                              <td>
+                               -
+                              </td>
+                              <td>
+                               N
+                              </td>
+                              <td>
+                               -
+                              </td>
+                              <td>
+                               -
+                              </td>
+                              <tr>
+                               <td>
+                                DES
+                               </td>
+                               <td>
+                                -
+                               </td>
+                               <td>
+                                -
+                               </td>
+                               <td>
+                                -
+                               </td>
+                               <td>
+                                -
+                               </td>
+                               <td>
+                                -
+                               </td>
+                               <td>
+                                -
+                               </td>
+                               <td>
+                                N
+                               </td>
+                               <td>
+                                N
+                               </td>
+                               <td>
+                                -
+                               </td>
+                               <td>
+                                N
+                               </td>
+                               <td>
+                                -
+                               </td>
+                               <td>
+                                -
+                               </td>
+                               <tr>
+                                <td>
+                                 IME
+                                </td>
+                                <td>
+                                 -
+                                </td>
+                                <td>
+                                 -
+                                </td>
+                                <td>
+                                 N
+                                </td>
+                                <td>
+                                 -
+                                </td>
+                                <td>
+                                 -
+                                </td>
+                                <td>
+                                 N
+                                </td>
+                                <td>
+                                 N
+                                </td>
+                                <td>
+                                 -
+                                </td>
+                                <td>
+                                 N
+                                </td>
+                                <td>
+                                 N
+                                </td>
+                                <td>
+                                 -
+                                </td>
+                                <td>
+                                 -
+                                </td>
+                                <tr>
+                                 <td>
+                                  CGS
+                                 </td>
+                                 <td>
+                                  -
+                                 </td>
+                                 <td>
+                                  -
+                                 </td>
+                                 <td>
+                                  -
+                                 </td>
+                                 <td>
+                                  -
+                                 </td>
+                                 <td>
+                                  -
+                                 </td>
+                                 <td>
+                                  -
+                                 </td>
+                                 <td>
+                                  -
+                                 </td>
+                                 <td>
+                                  -
+                                 </td>
+                                 <td>
+                                  -
+                                 </td>
+                                 <td>
+                                  N
+                                 </td>
+                                 <td>
+                                  -
+                                 </td>
+                                 <td>
+                                  N
+                                 </td>
+                                 <tr>
+                                  <td>
+                                   HSS
+                                  </td>
+                                  <td>
+                                   -
+                                  </td>
+                                  <td>
+                                   -
+                                  </td>
+                                  <td>
+                                   -
+                                  </td>
+                                  <td>
+                                   -
+                                  </td>
+                                  <td>
+                                   -
+                                  </td>
+                                  <td>
+                                   -
+                                  </td>
+                                  <td>
+                                   -
+                                  </td>
+                                  <td>
+                                   -
+                                  </td>
+                                  <td>
+                                   -
+                                  </td>
+                                  <td>
+                                   N
+                                  </td>
+                                  <td>
+                                   -
+                                  </td>
+                                  <td>
+                                   -
+                                  </td>
+                                  <tr>
+                                   <td>
+                                    EEM
+                                   </td>
+                                   <td>
+                                    -
+                                   </td>
+                                   <td>
+                                    -
+                                   </td>
+                                   <td>
+                                    N
+                                   </td>
+                                   <td>
+                                    -
+                                   </td>
+                                   <td>
+                                    -
+                                   </td>
+                                   <td>
+                                    N
+                                   </td>
+                                   <td>
+                                    -
+                                   </td>
+                                   <td>
+                                    -
+                                   </td>
+                                   <td>
+                                    -
+                                   </td>
+                                   <td>
+                                    N
+                                   </td>
+                                   <td>
+                                    -
+                                   </td>
+                                   <td>
+                                    -
+                                   </td>
+                                   <tr>
+                                    <td>
+                                     MSP
+                                    </td>
+                                    <td>
+                                     -
+                                    </td>
+                                    <td>
+                                     -
+                                    </td>
+                                    <td>
+                                     N
+                                    </td>
+                                    <td>
+                                     -
+                                    </td>
+                                    <td>
+                                     -
+                                    </td>
+                                    <td>
+                                     -
+                                    </td>
+                                    <td>
+                                     -
+                                    </td>
+                                    <td>
+                                     -
+                                    </td>
+                                    <td>
+                                     -
+                                    </td>
+                                    <td>
+                                     N
+                                    </td>
+                                    <td>
+                                     -
+                                    </td>
+                                    <td>
+                                     -
+                                    </td>
+                                    <tr>
+                                     <td>
+                                      NET
+                                     </td>
+                                     <td>
+                                      -
+                                     </td>
+                                     <td>
+                                      -
+                                     </td>
+                                     <td>
+                                      N
+                                     </td>
+                                     <td>
+                                      -
+                                     </td>
+                                     <td>
+                                      -
+                                     </td>
+                                     <td>
+                                      N
+                                     </td>
+                                     <td>
+                                      -
+                                     </td>
+                                     <td>
+                                      -
+                                     </td>
+                                     <td>
+                                      -
+                                     </td>
+                                     <td>
+                                      N
+                                     </td>
+                                     <td>
+                                      -
+                                     </td>
+                                     <td>
+                                      -
+                                     </td>
+                                     <tr>
+                                      <td>
+                                       PSE
+                                      </td>
+                                      <td>
+                                       -
+                                      </td>
+                                      <td>
+                                       -
+                                      </td>
+                                      <td>
+                                       N
+                                      </td>
+                                      <td>
+                                       -
+                                      </td>
+                                      <td>
+                                       -
+                                      </td>
+                                      <td>
+                                       N
+                                      </td>
+                                      <td>
+                                       -
+                                      </td>
+                                      <td>
+                                       -
+                                      </td>
+                                      <td>
+                                       -
+                                      </td>
+                                      <td>
+                                       N
+                                      </td>
+                                      <td>
+                                       -
+                                      </td>
+                                      <td>
+                                       N
+                                      </td>
+                                      <tr>
+                                       <td>
+                                        Stats
+                                       </td>
+                                       <td>
+                                        -
+                                       </td>
+                                       <td>
+                                        -
+                                       </td>
+                                       <td>
+                                        -
+                                       </td>
+                                       <td>
+                                        -
+                                       </td>
+                                       <td>
+                                        -
+                                       </td>
+                                       <td>
+                                        -
+                                       </td>
+                                       <td>
+                                        -
+                                       </td>
+                                       <td>
+                                        -
+                                       </td>
+                                       <td>
+                                        -
+                                       </td>
+                                       <td>
+                                        N
+                                       </td>
+                                       <td>
+                                        N
+                                       </td>
+                                       <td>
+                                        -
+                                       </td>
+                                      </tr>
+                                     </tr>
+                                    </tr>
+                                   </tr>
+                                  </tr>
+                                 </tr>
+                                </tr>
+                               </tr>
+                              </tr>
+                             </tr>
+                            </tr>
+                           </tr>
+                          </tr>
+                         </tr>
+                        </tr>
+                       </tr>
+                      </tr>
+                     </tr>
+                    </tr>
+                   </tr>
+                  </tr>
+                 </tr>
+                </tbody>
+               </table>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               Cost to Company :
+              </td>
+              <td>
+               <p>
+                153000 EUR
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               Package Details :
+              </td>
+              <td>
+               <p>
+                80000 EUR base salary
+                <br/>
+                20000 EUR sign-on bonus
+                <br/>
+                50000 EUR minimum guaranteed bonus after the first year
+                <br/>
+                3000 EUR relocation allowance
+               </p>
+               <p>
+               </p>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               Bond  :
+              </td>
+              <td>
+               False
+              </td>
+             </tr>
+             <tr>
+              <td>
+               Medical Requirements :
+              </td>
+              <td>
+              </td>
+             </tr>
+             <tr>
+              <td>
+               Resume Shortlist :
+              </td>
+              <td>
+               False
+              </td>
+             </tr>
+             <tr>
+              <td>
+               Aptitude Test:
+              </td>
+              <td>
+               False
+              </td>
+             </tr>
+             <tr>
+              <td>
+               Group Discussion:
+              </td>
+              <td>
+               False
+              </td>
+             </tr>
+             <tr>
+              <td>
+               Technical Test:
+              </td>
+              <td>
+               False
+              </td>
+             </tr>
+             <tr>
+              <td>
+               Technical Interview:
+              </td>
+              <td>
+               False
+              </td>
+             </tr>
+             <tr>
+              <td>
+               HR Interview:
+              </td>
+              <td>
+               False
+              </td>
+             </tr>
+            </tbody>
+           </table>
+          </div>
+         </div>
+         <p>
+         </p>
+         <hr/>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- <div class="footer">
+                <div class="container-fluid">
+                    <nav class="pull-left">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Company
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Portfolio
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                   Blog
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <p class="pull-right text-block">
+                        Developed & Maintained by <a href="/web_team" target="blank">Web Team</a>, Student Placement Office IIT Kanpur </p>
+
+                </div>
+            </div>
+
+                 -->
+  </div>
+ </body>
+</html>
+<script type="text/javascript">
+ $(document).ready(function(){
+    $('#confirm').on('show.bs.modal',function(event){
+      var button = $(event.relatedTarget);
+      var resume_id = button.data('resume');
+      var modal = $(this);
+      modal.find(".modal-body button[name = 'delete']").val(resume_id);
+    });
+  })
+</script>
+<script type="text/javascript">
+ $(document).ready(function(){
+
+            demo.initChartist();
+
+            $.notify({
+                icon: 'pe-7s-gift',
+                message: "Welcome <b></b> to <b>IAS Portal</b>"
+
+            },{
+                type: 'info',
+                timer: 4000
+            });
+
+        });
+</script>
+<!-- <script type="text/javascript">
+    $('#news').html($('#news').text());
+    </script> -->
